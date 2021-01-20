@@ -34,7 +34,6 @@ const ControlledInputs = () => {
               onChange={handleChange}
             />
           </div>
-         
         </form>
       </article>
       <article>
