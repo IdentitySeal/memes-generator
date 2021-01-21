@@ -38,8 +38,8 @@ const ControlledInputs = () => {
       </article>
       <article>
             <div key={person.id} className='item'>
-              <p>{person.textAbove}</p>
-              <p>{person.textBelow}</p>
+              <p className="topText">{person.textAbove}</p>
+              <p className="bottomText">{person.textBelow}</p>
             </div>
 
       </article>

@@ -4,6 +4,8 @@ import axios from 'axios'
 export default function DisplayMemes() {
 
     const [image,setImage] = useState("https://i.imgflip.com/22bdq6.jpg")
+    const [imageAlt,setImageAlt] = useState("")
+
     const [memeImage, setMemeImage] = useState([])
     // const [text,setText] = useState({textAbove:'',textBelow:''})
 
@@ -30,17 +32,18 @@ export default function DisplayMemes() {
         e.preventDefault()
         console.log("Hey")
         const randomNum = Math.floor(Math.random()*memeImage.length);  
-        const randomImg = memeImage[randomNum].url
-        setImage(randomImg)
+        const {url,name} = memeImage[randomNum]
+        setImage(url)
+        setImageAlt(name)
+
     }
 
 
     return (
         <div>
             <button onClick={HandleRandomMeme}>Generate Meme</button>
-            <img src={image} alt="kskks"/>
+            <img src={image} alt={imageAlt}/>
 
-``
         </div>
     )
 }
