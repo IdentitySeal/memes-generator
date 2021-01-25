@@ -47,8 +47,7 @@ export default function DisplayMemes() {
     };
 
     return (
-        <div>
-            <article className='form'>
+        <div className="container">
         <form>
           <div className='form-control'>
             {/* <label htmlFor='firstName'>Name : </label> */}
@@ -70,18 +69,21 @@ export default function DisplayMemes() {
               onChange={handleChange}
             />
           </div>
-        </form>
-      </article>
-      <article>
-            <div key={person.id} className='item'>
-              <p className="topText">{person.textAbove}</p>
-              <p className="bottomText">{person.textBelow}</p>
-              <button onClick={HandleRandomMeme}>Generate Meme</button>
-            <img src={image} alt={imageAlt}/>
 
+        </form>
+            <div key={person.id} className=''>
+            <img src={image} alt={imageAlt}/>
+            <div>
+            <p className="topText">{person.textAbove}</p>
+            <p className="bottomText">{person.textBelow}</p> 
             </div>
 
-      </article>
+
+            </div>
+            <button onClick={HandleRandomMeme}>Generate Meme Image</button>
+            <button>Download Meme</button>
+
+
 
         </div>
     )

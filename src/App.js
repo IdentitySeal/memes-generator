@@ -4,10 +4,11 @@ import DisplayMemes from './components/DisplayMemes'
 // import TextField from '../src/components/TextField'
 
 function App() {
-  return (
-    <>s
-      
+  return (    
+    <>
     <div className="App">
+    <h1>MEME GENERATOR</h1>
+
       {/* <TextField/>
 
       <Index/> */}
