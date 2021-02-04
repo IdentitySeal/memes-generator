@@ -1,19 +1,13 @@
 import './App.css';
-// import Index from '../src/components/Index'
-import DisplayMemes from './components/DisplayMemes'
-// import TextField from '../src/components/TextField'
+import DisplayMemes from './components/DisplayMemes';
+import Header from './components/Header'
 
 function App() {
   return (    
     <>
-    <div className="App">
-    <h1>MEME GENERATOR</h1>
-
-      {/* <TextField/>
-
-      <Index/> */}
+    <div>
+      <Header/>
       <DisplayMemes/>
-    {/* <ImageField/> */}
     </div>
     </>
   );

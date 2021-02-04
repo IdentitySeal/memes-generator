@@ -6,6 +6,10 @@
 h1{
   text-align: center;
   font-size: 3rem;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  background-color: blue;
+  padding: 2rem;
+  margin: 2rem;
 }
 input {
   border: 1px solid grey ;
@@ -17,9 +21,9 @@ input {
 }
 button{
   border-radius: .5rem;
-  border: 1px solid gold;
+  border: 1px solid blue;
   background-color: #fff;
-  color:gold;
+  color:blue;
   padding: 0.25rem .2rem;
   width: 300px;
   margin: .5rem;
@@ -27,47 +31,36 @@ button{
 }
 button:hover{
   color: #fff;
-  background-color: gold;
+  background-color: blue;
   border: 1px solid #fff;
 
 }
-img{
+.image{
   width: 400px;
   height: 350px;
-  /* margin: 110px; */
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
 
 .topText{
-    
-    position: absolute;
     top: 20%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: xx-large;
-    text-transform: uppercase;
-    font-weight: bolder;
-    font-family: 'Courier New', Courier, monospace;
-    color:#fff;
-    white-space: wrap;
-    background-color: #000;
-
-
 }
 .bottomText{
-    position: absolute;
-    bottom: 20%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: xx-large;
-    text-transform: uppercase;
-    font-weight: bolder;
-    font-family: 'Courier New', Courier, monospace;
-    white-space: wrap;
-    color:#fff;
-    background-color: #000;
+  bottom: 5%;
+}
+
+.topText,.bottomText{
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: xx-large;
+  text-transform: uppercase;
+  font-weight: bolder;
+  font-family: 'Courier New', Courier, monospace;
+  color:#fff;
+  white-space: wrap;
+  text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 0 2px 0 #000, 2px 0 0 #000, 0 -2px 0 #000, -2px 0 0 #000, 2px 2px 5px #000;
 
 }
 
