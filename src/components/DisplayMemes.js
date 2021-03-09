@@ -1,14 +1,19 @@
-import React,{useState,useEffect} from 'react'
-import axios from 'axios'
+import React,{useState,useEffect} from 'react';
+import * as htmlToImage from 'html-to-image';
+import FileSaver from 'file-saver';
+import axios from 'axios';
+
 
 export default function DisplayMemes() {
     const [text, setText] = useState({ textAbove: '', textBelow: ''});
     const [image,setImage] = useState("https://i.imgflip.com/22bdq6.jpg")
     const [imageAlt,setImageAlt] = useState("")
     const [memeImage, setMemeImage] = useState([])
-    
-    // const [text,setText] = useState({textAbove:'',textBelow:''})
-
+    const [{alt, src}, setImg] = useState({
+      src: image,
+      alt: 'Upload an Image'
+  });    
+  const [set,setSet ] = useState(false)
     const url = 'https://api.imgflip.com/get_memes';
 
     const imageData= async()=>{
@@ -35,6 +40,8 @@ export default function DisplayMemes() {
         const {url,name} = memeImage[randomNum]
         setImage(url)
         setImageAlt(name)
+        setSet(false)
+
 
     }
 
@@ -45,6 +52,24 @@ export default function DisplayMemes() {
       setText({ ...text, [name]: value });
     };
 
+    const downloadPreview = (e)=>{
+      e.preventDefault();
+      htmlToImage.toBlob(document.getElementById('meme-image-text'))
+        .then(function (blob) {
+            FileSaver.saveAs(blob, `${imageAlt}.png`);
+        });
+
+    }
+
+    const handleFileChange = (e)=>{
+      if(e.target.files[0]) {
+        setImg({
+            src: URL.createObjectURL(e.target.files[0]),
+            alt: e.target.files[0].name
+        });    
+        setSet(true)
+      }       
+    } 
     return (
         <div className="container">
           <form>
@@ -54,6 +79,7 @@ export default function DisplayMemes() {
                 id='textAbove'
                 name='textAbove'
                 value={text.textAbove}
+                placeholder ='Input text above'
                 onChange={handleChange}
               />
             </div>
@@ -62,21 +88,44 @@ export default function DisplayMemes() {
                 type='text'
                 id='textBelow'
                 name='textBelow'
+                placeholder ='Input text below'
                 value={text.textBelow}
                 onChange={handleChange}
               />
             </div>
 
+            {/*  */}
+
+
+
           </form>
-              <div key={text.id} className=''>
-                <img className="image" src={image} alt={imageAlt}/>
-                <div>
-                  <p className="topText text">{text.textAbove}</p>
-                  <p className="bottomText text">{text.textBelow}</p> 
-                </div>
+              <div className='canvas-container' key={text.id} id='meme-image-text'>
+                {!set ? <img className="image" src={image} alt={imageAlt}/> 
+                
+                :
+                <img className="image" src={src} alt={alt}/>
+                }
+                
+
+                  <p className="topText text" id='meme-image-text'>{text.textAbove}</p>
+                  <p className="bottomText text"id='meme-image-text'>{text.textBelow}</p> 
               </div>
               <button onClick={HandleRandomMeme}>Generate Meme Image</button>
-              <button>Download Meme</button>
+              <button onClick = {downloadPreview}>Download Meme</button>
+
+                <div className="image-upload-div">
+                  <input  
+                        type="file" 
+                        accept=".png, .jpg, .jpeg" 
+                        id="image-upload" 
+                        className="visibility"
+                      
+                        onChange={handleFileChange}
+                    />
+                    <label class="image-upload-button center" for="image-upload">Upload Your Image</label>
+                </div>
+
+
       </div>
     )
 }
